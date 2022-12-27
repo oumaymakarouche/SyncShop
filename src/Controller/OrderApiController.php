@@ -13,7 +13,7 @@ class OrderApiController extends AbstractController
     public function __construct( private OrdersData $ordersData)
     {
     }
-    #[Route( name: 'app_order_to_csv_api')]
+    #[Route( name: 'app_orders_to_csv_api')]
     public function __invoke()
     {
         $commandesData = $this->ordersData->getCommandes();
