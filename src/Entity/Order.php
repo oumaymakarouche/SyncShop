@@ -35,7 +35,7 @@ class Order
     #[ORM\Column(length: 10)]
     private ?string $Currency = null;
 
-    #[ORM\ManyToOne(inversedBy: 'OrderID')]
+    #[ORM\ManyToOne(inversedBy: 'OrderID',cascade: ["persist"])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Contact $DeliverTo = null;
 

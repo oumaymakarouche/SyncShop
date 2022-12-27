@@ -54,13 +54,13 @@ class OrderRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Order
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->andWhere('o.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function findOneByOrderId($OrderID): ?Order
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.OrderID = :val')
+            ->setParameter('val', $OrderID)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
 }
