@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  database:
+    image: mysql:8.1
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-SyncShop}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-}
+      MYSQL_USER: ${MYSQL_USER:-root}
+    volumes:
+      - db-data:/var/lib/mysql:rw
+
+  app:
+    image: oumaymmakarouche/syncshop:latest
+    ports:
+      - "8080:80"
+    environment:
+      DATABASE_URL: mysql://${MYSQL_USER:-root}:${MYSQL_PASSWORD:-}@database:3306/${MYSQL_DATABASE:-SyncShop}
+
+volumes:
+  db-data:
